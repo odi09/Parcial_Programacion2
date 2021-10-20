@@ -15,6 +15,7 @@
 #include "utn.h"
 #include "salon.h"
 #include "arcade.h"
+#include "informe.h"
 #define LARGO_ARRAY_SALON 100
 #define LARGO_ARRAY_ARCADE 1000
 
@@ -36,6 +37,8 @@ int tipoSala;
 int posicionSalon;
 int posicionArcade;
 int id;
+int idSala;
+//int prueba;
 
     initSalon(arraySalon, LARGO_ARRAY_SALON);
 	do
@@ -56,7 +59,8 @@ int id;
 			case 2:
 				imprimirTodaslasSalas(arraySalon, LARGO_ARRAY_SALON);
 				pedirEntero(&id, 0, 100, 3, "Ingrese Id a dar de baja: \n", "ERROR ingrese un Id valido");
-				baja(arraySalon, LARGO_ARRAY_SALON, id, "Id de la Sala esta dato dado de Baja.\n\n");
+				baja(arraySalon, LARGO_ARRAY_SALON, id, "**Id de la Sala esta dato dado de Baja.**\n\n");
+				bajaArcade(arrayAcarde, LARGO_ARRAY_ARCADE, id,"**Id de la Arcade esta dato dado de Baja.**\n\n");
 				break;
 			case 3:
 				imprimirTodaslasSalas(arraySalon, LARGO_ARRAY_SALON);
@@ -67,8 +71,10 @@ int id;
 				pedirDireccion(nombreJuego, sizeof(nombreJuego), 3, "Ingrese Nombre del Juego: ", "ERROR ingrese nombre valida");
 				pedirEntero(&cantidadJug, 0, 10, 3, "Ingrese Cantidad de jugadores: ", "ERROR ingrese cantidad valida del 0 - 10");
 				pedirEntero(&cantidadMaxFichas, 0, 100, 3, "Ingrese Cantidad Maxima de fichas: ", "ERROR ingrese cantida valida del 0 - 100");
+				imprimirTodaslasSalas(arraySalon, LARGO_ARRAY_SALON);
+				pedirEntero(&idSala, 0, 100, 3, "Ingrese Id de la sala: ", "ERROR ingrese Id valida del 0 - 100");
 				posicionLibreArcade(arrayAcarde, LARGO_ARRAY_ARCADE, &posicionArcade);
-				altaArcade(&arrayAcarde[posicionArcade], naciJuego, sonidoArcade, nombreJuego, cantidadJug, cantidadMaxFichas);
+				altaArcade(&arrayAcarde[posicionArcade], naciJuego, sonidoArcade, nombreJuego, cantidadJug, cantidadMaxFichas, idSala);
 				imprimirUnArcade(&arrayAcarde[posicionArcade]);
 				break;
 			case 5:
@@ -99,6 +105,8 @@ int id;
 			case 8:
 				break;
 			case 9:
+				//prueba = listarArcadeMaxJuag(arraySalon, LARGO_ARRAY_SALON, arrayAcarde, LARGO_ARRAY_ARCADE);
+				//printf("suma de arcade%d\n", prueba);
 				break;
 			}
 

@@ -8,6 +8,7 @@
 #ifndef INFORME_H_
 #define INFORME_H_
 
+int listarArcadeMaxJuag(eSalon sala[], int largoSala , eArcade arcade[], int largoArcade);
 
 
 #endif /* INFORME_H_ */

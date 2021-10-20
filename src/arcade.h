@@ -15,11 +15,12 @@ typedef struct
 	int cantiJugadores;
 	int cantiMaxFichas;
 	int id;
+	int idSala;
 	int isEmpty; // // 1 Dando de alta, 0 dado de baja o Disponible
 }eArcade;
 
 int initArcade(eArcade arcade[], int largo);
-int altaArcade(eArcade arcade[], char nacionalidad[], int tipoDeSonido, char nombreDelJuego[], int cantJugadores, int cantFichas);
+int altaArcade(eArcade arcade[], char nacionalidad[], int tipoDeSonido, char nombreDelJuego[], int cantJugadores, int cantFichas, int idSala);
 int modifcarArcade(eArcade arcade[], int largo, int idArcade, char nombreDelJuego[], int cantJugadores, int opcion);
 int posicionLibreArcade(eArcade arcade[], int largo, int* auxPosicion);
 int bajaArcade(eArcade arcade[], int largo, int id, char* pMensaje);

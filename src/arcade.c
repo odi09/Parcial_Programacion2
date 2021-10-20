@@ -66,16 +66,17 @@ int posicionLibreArcade(eArcade arcade[], int largo, int* auxPosicion)
  * param cantFichas. Recibe la cantidad maxima de fichas.
  * param Retorna 1 si sale todo bien o 0 si no.
  */
-int altaArcade(eArcade arcade[], char nacionalidad[], int tipoDeSonido, char nombreDelJuego[], int cantJugadores, int cantFichas)
+int altaArcade(eArcade arcade[], char nacionalidad[], int tipoDeSonido, char nombreDelJuego[], int cantJugadores, int cantFichas, int idSala)
 {
 	int retorno = 0;
 
-	if(arcade != NULL && nacionalidad != NULL && tipoDeSonido > 0 && nombreDelJuego != NULL && cantJugadores > 0 && cantFichas > 0)
+	if(arcade != NULL && nacionalidad != NULL && tipoDeSonido > 0 && nombreDelJuego != NULL && cantJugadores > 0 && cantFichas > 0 && idSala > 0)
 	{
 		strncpy(arcade->nacionadidad, nacionalidad, sizeof(arcade->nacionadidad));
 		arcade->tipoSonido = tipoDeSonido;
 		strncpy(arcade->nombreJuego, nombreDelJuego, sizeof(arcade->nombreJuego));
 		arcade->id = generarId();
+		arcade->idSala = idSala;
 		arcade->isEmpty = 1;
 		arcade->cantiJugadores = cantJugadores;
 		arcade->cantiMaxFichas = cantFichas;
@@ -188,8 +189,8 @@ int imprimirUnArcade(eArcade arcade[])
 
 	if (arcade != NULL)
 	{
-		printf("-Nacionalidad del Arade: %s - Tipo de Sonido: %d - Nombre del Juego: %s - Cantidad de Jugadores: %d - Cantidad Maxima de Fichas: %d - Id: -%d\n\n"
-				,arcade->nacionadidad, arcade->tipoSonido, arcade->nombreJuego, arcade->cantiJugadores, arcade->cantiMaxFichas, arcade->id);
+		printf("-Id Sala: %d - Nacionalidad del Arade: %s - Tipo de Sonido: %d - Nombre del Juego: %s - Cantidad de Jugadores: %d - Cantidad Maxima de Fichas: %d - Id: %d-\n\n"
+				,arcade->idSala,arcade->nacionadidad, arcade->tipoSonido, arcade->nombreJuego, arcade->cantiJugadores, arcade->cantiMaxFichas, arcade->id);
 		retorno = 1;
 	}
 	return retorno;
