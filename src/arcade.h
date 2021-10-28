@@ -28,4 +28,6 @@ int buscarIdArcade(eArcade arcade[], int largo, int id);
 int imprimirUnArcade(eArcade arcade[]);
 int imprimirTodaslosArcade(eArcade arcade[], int largo);
 
+int alta_FONZADA_Arcade(eArcade arcade[], char nacionalidad[], int tipoDeSonido, char nombreDelJuego[], int cantJugadores, int cantFichas, int idSala);
+
 #endif /* ARCADE_H_ */

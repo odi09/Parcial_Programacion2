@@ -10,6 +10,7 @@
 #include <ctype.h>
 #include "utn.h"
 #include "arcade.h"
+#define LEN_ARRAY_ARCADE 1000
 static int generarId(void);
 
 /**\brief Inicializa todas las posiciones colocando un 0 de ocupado.
@@ -72,9 +73,9 @@ int altaArcade(eArcade arcade[], char nacionalidad[], int tipoDeSonido, char nom
 
 	if(arcade != NULL && nacionalidad != NULL && tipoDeSonido > 0 && nombreDelJuego != NULL && cantJugadores > 0 && cantFichas > 0 && idSala > 0)
 	{
-		strncpy(arcade->nacionadidad, nacionalidad, sizeof(arcade->nacionadidad));
+		strncpy(arcade->nacionadidad, nacionalidad, LEN_ARRAY_ARCADE);
 		arcade->tipoSonido = tipoDeSonido;
-		strncpy(arcade->nombreJuego, nombreDelJuego, sizeof(arcade->nombreJuego));
+		strncpy(arcade->nombreJuego, nombreDelJuego, LEN_ARRAY_ARCADE);
 		arcade->id = generarId();
 		arcade->idSala = idSala;
 		arcade->isEmpty = 1;
@@ -221,9 +222,28 @@ int imprimirTodaslosArcade(eArcade arcade[], int largo)
 	return retorno;
 }
 
+int alta_FONZADA_Arcade(eArcade arcade[], char nacionalidad[], int tipoDeSonido, char nombreDelJuego[], int cantJugadores, int cantFichas, int idSala)
+{
+	int retorno = 0;
+
+	if(arcade != NULL && nacionalidad != NULL && tipoDeSonido > 0 && nombreDelJuego != NULL && cantJugadores > 0 && cantFichas > 0 && idSala > 0)
+	{
+		strncpy(arcade->nacionadidad, nacionalidad, LEN_ARRAY_ARCADE);
+		arcade->tipoSonido = tipoDeSonido;
+		strncpy(arcade->nombreJuego, nombreDelJuego, LEN_ARRAY_ARCADE);
+		arcade->id = generarId();
+		arcade->idSala = idSala;
+		arcade->isEmpty = 1;
+		arcade->cantiJugadores = cantJugadores;
+		arcade->cantiMaxFichas = cantFichas;
+		retorno = 1;
+	}
+	return retorno;
+}
+
 static int generarId(void)
 {
-	static int contador = 1;
+	static int contador = 0001;
 	return contador++;
 }
 

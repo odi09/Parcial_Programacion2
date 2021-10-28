@@ -19,13 +19,16 @@
 #define LARGO_ARRAY_SALON 100
 #define LARGO_ARRAY_ARCADE 1000
 
+
 int main(void) {
 	setbuf(stdout, NULL);
 
 eSalon arraySalon[LARGO_ARRAY_SALON];
 eArcade arrayAcarde[LARGO_ARRAY_ARCADE];
+eJuego juegoLista[LARGO_ARRAY_ARCADE];
 int opcion;
 int opcionArcadea;
+int subMenu;
 char nombreSala[128];
 char direccionSala[128];
 char naciJuego[128];
@@ -41,6 +44,28 @@ int idSala;
 //int prueba;
 
     initSalon(arraySalon, LARGO_ARRAY_SALON);
+
+    alta_forzada(&arraySalon[0], "FLORESTA","NAZCA 1000", 2);
+    alta_forzada(&arraySalon[1], "ALMAGRO","CORRIENTE 1100", 1);
+    alta_forzada(&arraySalon[2], "PALERMO"," HONDURA 2000", 2);
+    alta_forzada(&arraySalon[3], "FLORES","RIVADAVIA 2100", 1);
+    alta_forzada(&arraySalon[4], "SAN CRISTOBAL","SAN JUAN 3000", 2);
+    alta_forzada(&arraySalon[5], "CONSTITUCION","SAN JUAN 3100", 1);
+
+    alta_FONZADA_Arcade(&arrayAcarde[0], "EEUU", 1, "MARIO", 10, 100, 3);
+    alta_FONZADA_Arcade(&arrayAcarde[1], "MEXICO", 1, "TACO", 1, 100, 2);
+    alta_FONZADA_Arcade(&arrayAcarde[2], "ARGENTINA", 2, "PIBE", 2, 100, 2);
+    alta_FONZADA_Arcade(&arrayAcarde[3], "CHILE", 1, "CHELA", 3, 100, 3);
+    alta_FONZADA_Arcade(&arrayAcarde[4], "CANADA", 1, "MARIO", 10, 100, 3);
+    alta_FONZADA_Arcade(&arrayAcarde[5], "URUGUAY", 1, "PIBE", 1, 100, 3);
+    alta_FONZADA_Arcade(&arrayAcarde[6], "COLOMBIA", 1, "MARIO", 10, 100, 3);
+	alta_FONZADA_Arcade(&arrayAcarde[7], "PANAMA", 1, "TACO", 4, 100, 2);
+	alta_FONZADA_Arcade(&arrayAcarde[8], "VENEZUELA", 2, "PIBE", 2, 100, 2);
+	alta_FONZADA_Arcade(&arrayAcarde[9], "IRLANDA", 1, "CHELA", 3, 100, 3);
+	alta_FONZADA_Arcade(&arrayAcarde[10], "CANADA", 1, "MARIO", 10, 100, 2);
+	alta_FONZADA_Arcade(&arrayAcarde[11], "URUGUAY", 1, "PIBE", 2, 100, 2);
+
+
 	do
 	{
 		pedirEntero(&opcion, 0, 9, 3,"Ingrese una opcion:\n1.Dar el alta de una Sala.\n2.Dar de baja una Sala.\n3.Imprimir las Salas dadas de Alta."
@@ -103,10 +128,23 @@ int idSala;
 				imprimirTodaslosArcade(arrayAcarde, LARGO_ARRAY_ARCADE);
 				break;
 			case 8:
+				generarListaJuegos(arrayAcarde, LARGO_ARRAY_ARCADE,juegoLista , LARGO_ARRAY_ARCADE);
 				break;
 			case 9:
-				//prueba = listarArcadeMaxJuag(arraySalon, LARGO_ARRAY_SALON, arrayAcarde, LARGO_ARRAY_ARCADE);
-				//printf("suma de arcade%d\n", prueba);
+				pedirEntero(&subMenu, 1, 7, 3, "Selecciones un Informe.\n1.Listar los salones con más de 4 arcades.\n"
+						                       "2.Listar los arcades para más de 2 jugadores.\n3.Listar toda la información de un salón en específico ingresando su ID.\n"
+						                       "4.Listar todos los arcades de un salón determinado ingresando su ID.\n5.Imprimir el salón con más cantidad de arcades.\n"
+						                       "6.Ingresar el ID de un salón, y el valor en pesos de una ficha.\n"
+						                       "7.Ingresar el nombre de un juego.\n", "ERROR ingrese una opcion valida\n");
+				switch(subMenu)
+				{
+				case 1:
+					listarSalonesConMasArcade(arrayAcarde, LARGO_ARRAY_ARCADE, arraySalon, LARGO_ARRAY_SALON);
+					break;
+				case 2:
+					listarArcadeConMasJugadores(arrayAcarde, LARGO_ARRAY_ARCADE, arraySalon, LARGO_ARRAY_SALON);
+					break;
+				}
 				break;
 			}
 

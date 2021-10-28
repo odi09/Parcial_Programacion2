@@ -10,6 +10,7 @@
 #include <ctype.h>
 #include "utn.h"
 #include "salon.h"
+#define LEN_ARRAY_SALON 100
 static int generarId(void);
 
 /**\brief Inicializa todas las posiciones colocando un 0 de ocupado.
@@ -73,8 +74,8 @@ int alta(eSalon salon[], char nombre[], char direccion[], int tipo)
 		salon->id = generarId();
 		salon->isEmpty = 1;
 		salon->tipo = tipo;
-		strncpy(salon->nombre, nombre, sizeof(salon->nombre));
-		strncpy(salon->direccion, direccion, sizeof(salon->direccion));
+		strncpy(salon->nombre, nombre, LEN_ARRAY_SALON);
+		strncpy(salon->direccion, direccion, LEN_ARRAY_SALON);
 		retorno = 1;
 	}
 	return retorno;
@@ -173,6 +174,21 @@ int imprimirTodaslasSalas(eSalon salon[], int largo)
 				retorno = 1;
 			}
 		}
+	}
+	return retorno;
+}
+int alta_forzada(eSalon salon[], char nombre[], char direccion[], int tipo)
+{
+	int retorno = 0;
+
+	if(salon != NULL && nombre != NULL && direccion != NULL && tipo > 0 )
+	{
+		salon->id = generarId();
+		salon->isEmpty = 1;
+		salon->tipo = tipo;
+		strncpy(salon->nombre, nombre, LEN_ARRAY_SALON);
+		strncpy(salon->direccion, direccion, LEN_ARRAY_SALON);
+		retorno = 1;
 	}
 	return retorno;
 }

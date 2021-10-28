@@ -23,4 +23,7 @@ int baja(eSalon salon[], int largo, int id, char* pMensaje);
 int buscarId(eSalon salon[], int largo, int id);
 int imprimirUnSalon(eSalon salon[]);
 int imprimirTodaslasSalas(eSalon salon[], int largo);
+
+int alta_forzada(eSalon salon[], char nombre[], char direccion[], int tipo);
+
 #endif /* SALON_H_ */
